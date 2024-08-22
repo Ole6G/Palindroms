@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 
 
-from books.views import BooksPublishedAfterDateView, AuthorWithMostBooksView
+from books.views import BooksPublishedAfterDateView, AuthorWithMostBooksView, AuthorRevenueView, \
+    BooksContainingPythonView, BooksListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('books/', BooksPublishedAfterDateView.as_view(), name='books_list'),
+    path('books23+/', BooksPublishedAfterDateView.as_view(), name='books_list'),
     path('most-books-author/', AuthorWithMostBooksView.as_view(), name='most_books_author'),
+    path('author-revenue/', AuthorRevenueView.as_view(), name='author_revenue'),
+    path('containing-python/', BooksContainingPythonView.as_view(), name='books_containing_python'),
+    path('list-books/', BooksListView.as_view(), name='books_list'),
 
 ]

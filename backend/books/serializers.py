@@ -3,9 +3,11 @@ from .models import Author, Book, BookSale
 
 
 class AuthorSerializer(serializers.ModelSerializer):
+    revenue = serializers.DecimalField(max_digits=12, decimal_places=2, read_only=True)
+
     class Meta:
         model = Author
-        fields = '__all__'
+        fields = ['id', 'name', 'email', 'revenue']
 
 
 class BookSerializer(serializers.ModelSerializer):

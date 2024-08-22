@@ -5,6 +5,10 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
 
+    def get_revenue(self):
+        revenue = sum([sale.book.price * sale.quantity for sale in BookSale.objects.filter(book__author=self)])
+        return revenue
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
